@@ -2,15 +2,8 @@ import React from "react";
 import CalendarNavigator from "./calendarNavigator";
 import styles from "../styles/calendar.module.css"; // CSS 모듈 불러오기
 
-const Calendar = () => {
-  const today = new Date();
-  const nextMonth = new Date(
-    today.getFullYear(),
-    today.getMonth() + 1,
-    today.getDate()
-  );
-  const year = today.getFullYear();
-  const month = today.getMonth();
+const Calendar = ({year = new Date().getFullYear(), month = new Date().getMonth()}) => {
+
 
   const firstDayOfMonth = new Date(year, month, 1);
   const lastDayOfMonth = new Date(year, month + 1, 0);
@@ -20,6 +13,17 @@ const Calendar = () => {
 
   const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const cells = [];
+
+  const isToday = (day) => {
+    let today = new Date();
+    return day === today.getDate() && month === today.getMonth();
+  }
+
+  const isHoliday = (day) => {
+    let today = new Date(year, month, day);
+    return today.getDay() === 0;
+  }
+
 
   for (let i = 0; i < firstDayIndex; i++) {
     cells.push(
@@ -33,16 +37,19 @@ const Calendar = () => {
   for (let i = 1; i <= daysInMonth; i++) {
     cells.push(
       <div key={`day-${i}`} className={`${styles.cell} ${styles["date-cell"]}`}>
-        <div className={styles.date}>{i}</div>
+        <div className={
+          `${styles.date} 
+          ${isToday(i)? styles["date-today"] : ""}
+          ${isHoliday(i) ? styles["date-holiday"] : ""}
+          `}>{i}</div>
         <div className={styles.content}></div>
       </div>
     );
   }
 
   // 마지막 줄의 빈 셀 추가 (7열 맞추기)
-  const remainingCells = 7 - (cells.length % 7); // 남은 빈 셀 개수 계산
+  const remainingCells = 7 - (cells.length % 7);
   if (remainingCells < 7) {
-    // 7열로 채워야 하는 경우만 빈 셀 추가
     for (let i = 0; i < remainingCells; i++) {
       cells.push(
         <div
@@ -55,7 +62,7 @@ const Calendar = () => {
 
   return (
     <div>
-      <CalendarNavigator />
+      {year} . {month + 1}
       <div className={styles.calendar}>
         <div className={styles.header}>
           {weekDays.map((day, index) => (

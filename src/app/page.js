@@ -1,4 +1,5 @@
-import Calendar from "./components/calendar";
+// import Calendar from "./components/calendar";
+import Dashboard from "./pages/dashboard";
 
 export default function Home() {
   return (
@@ -6,7 +7,7 @@ export default function Home() {
       <h1 style={{ textAlign: "center", margin: "20px 0" }}>
         Next.js Calendar
       </h1>
-      <Calendar />
+      <Dashboard />
     </div>
   );
 }

@@ -13,7 +13,7 @@
 .header {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  background-color: #ffb7ff;
+  background-color: #EAE7CD;
   text-align: center;
   line-height: 64px;
   font-weight: bold;
@@ -35,8 +35,36 @@
   border-right: 1px dotted #ddd;
 }
 
+.date-holiday {
+  color: red;
+}
+
+.date-today {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+}
+
+.date-today::before {
+  content : "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #007bff;
+  border-radius: 50%;
+  z-index: -1;
+  transform: scale(1.5); /* 배경 크기 확장 */
+}
+
 .date-cell {
   background-color: #fff;
+}
+
+.date-cell:hover {
+  background-color: #FAF7DF;
+  transition: 0.5s;
 }
 
 .empty-cell {
