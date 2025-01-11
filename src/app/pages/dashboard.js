@@ -3,6 +3,7 @@
 import {useState} from 'react';
 import Calendar from '../components/calendar';
 import CalendarNavigator from '../components/calendarNavigator';
+import styles from '../styles/dashboard.module.css';
 
 
 const Dashboard = () => {
@@ -28,10 +29,17 @@ const Dashboard = () => {
     }
 
     return(
-        <div>
-            <CalendarNavigator next={nextMonthEvent} prev={prevMonthEvent} />
-            <Calendar year={currentYear} month={currentMonth}/>
-        </div>
+            <div className={styles.body}>
+                <div className={styles.title}>
+                    {currentYear} . {currentMonth + 1}
+                </div>
+                <div className={styles.navi}>
+                    <CalendarNavigator next={nextMonthEvent} prev={prevMonthEvent} />
+                </div>
+                <div className={styles.Calendar}>
+                    <Calendar year={currentYear} month={currentMonth}/>
+                </div>
+            </div>
     )
 }
 

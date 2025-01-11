@@ -1,5 +1,4 @@
 import React from "react";
-import CalendarNavigator from "./calendarNavigator";
 import styles from "../styles/calendar.module.css"; // CSS 모듈 불러오기
 
 const Calendar = ({year = new Date().getFullYear(), month = new Date().getMonth()}) => {
@@ -62,7 +61,6 @@ const Calendar = ({year = new Date().getFullYear(), month = new Date().getMonth(
 
   return (
     <div>
-      {year} . {month + 1}
       <div className={styles.calendar}>
         <div className={styles.header}>
           {weekDays.map((day, index) => (
