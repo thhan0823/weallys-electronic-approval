@@ -1,0 +1,40 @@
+.container {
+    display: flex;
+    gap: 30px;
+}
+
+.leave-balance {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap : 8px;
+}
+
+.tag {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    background-color: #BBA870;
+    color: #fff;
+    font-weight: 600;
+    padding: 0 5px 0 5px;
+    border-radius: 5px;
+}
+
+.join-date {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    gap: 5px;
+}
+
+.title > span {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.value {
+    font-size: 16px;
+}

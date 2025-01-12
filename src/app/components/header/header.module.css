@@ -1,0 +1,28 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 1092px;
+}
+
+.profile {
+    margin-left : auto;
+    padding: 15px;
+}
+
+.navigation {
+    display: flex;
+    gap: 60px;
+    padding: 16px;
+    font-weight: 700;
+    color : #D3D3D3;
+}
+
+.active {
+    color: #000;
+}
+
+.navigation > a:hover {
+    color: #000;
+    transition: 0.3s;
+}

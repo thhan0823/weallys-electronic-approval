@@ -60,6 +60,8 @@
 
 .date-cell {
   background-color: #fff;
+  font-weight: 700;
+  cursor: pointer;
 }
 
 .date-cell:hover {

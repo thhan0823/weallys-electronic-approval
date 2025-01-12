@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../styles/calendar.module.css"; // CSS 모듈 불러오기
+import styles from "./calendar.module.css"; // CSS 모듈 불러오기
 
 const Calendar = ({year = new Date().getFullYear(), month = new Date().getMonth()}) => {
 
