@@ -13,7 +13,7 @@
 .header {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  background-color: #EAE7CD;
+  background-color: #eae7cd;
   text-align: center;
   line-height: 64px;
   font-weight: bold;
@@ -43,19 +43,22 @@
   position: relative;
   z-index: 1;
   color: #fff;
+  width: 1.25em;
+  height: 1.25em;
+  text-align: center;
 }
 
 .date-today::before {
-  content : "";
+  content: "";
   position: absolute;
-  top: 0;
+  top: 3px;
   bottom: 0;
   width: 100%;
   height: 100%;
   background-color: #007bff;
   border-radius: 50%;
   z-index: -1;
-  transform: scale(1.5); /* 배경 크기 확장 */
+  transform: scale(1.5);
 }
 
 .date-cell {
@@ -65,7 +68,7 @@
 }
 
 .date-cell:hover {
-  background-color: #FAF7DF;
+  background-color: #faf7df;
   transition: 0.5s;
 }
 

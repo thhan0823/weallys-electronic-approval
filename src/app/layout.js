@@ -3,8 +3,9 @@ import Header from "./components/header/header";
 import "./globals.css";
 
 const geistSans = Noto_Sans_KR({
+  weight: ["100", "300", "400", "500", "600", "700", "800"],
   variable: "--font-geist-sans",
-  subsets: ["KR"],
+  subsets: ["latin", "KR"],
 });
 
 export const metadata = {
@@ -13,14 +14,15 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  const response = await fetch("http://localhost:3000/api/users", { cache: "no-store" });
+  const response = await fetch("http://localhost:3000/api/users", {
+    cache: "no-store",
+  });
   const userProfile = await response.json();
-
 
   return (
     <html lang="ko">
       <body className={`${geistSans.variable}`}>
-        <Header userProfile={userProfile}/>
+        <Header userProfile={userProfile} />
         <main>{children}</main>
       </body>
     </html>

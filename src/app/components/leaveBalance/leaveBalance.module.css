@@ -1,40 +1,86 @@
 .container {
-    display: flex;
-    gap: 30px;
+  display: flex;
+  gap: 30px;
 }
 
 .leave-balance {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap : 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
 }
 
-.tag {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    background-color: #BBA870;
-    color: #fff;
-    font-weight: 600;
-    padding: 0 5px 0 5px;
-    border-radius: 5px;
-}
-
-.join-date {
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    gap: 5px;
+.tooltip {
+  display: inline-block;
+  margin-right: 4px;
+  cursor: pointer;
 }
 
 .title > span {
-    font-size: 16px;
-    font-weight: 700;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .value {
-    font-size: 16px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.tooltip {
+  position: relative; /* 말풍선 위치를 상대적으로 설정 */
+  display: inline-block;
+  margin-right: 4px;
+  cursor: pointer;
+}
+
+.speech-bubble {
+  position: absolute; /* 말풍선을 `Image` 위에 배치 */
+  bottom: 20px; /* `Image` 위쪽으로 20px 배치 */
+  left: 50%; /* 중앙 정렬 */
+  transform: translateX(-50%); /* 중앙 정렬을 위한 변환 */
+  width: 285px;
+  height: 82px;
+  background-color: #d9d9d9;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 10px;
+  color: #000;
+  display: none; /* 기본적으로 숨김 */
+  z-index: 10;
+  opacity: 0; /* 투명도 초기값 */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* 부드러운 나타남 효과 */
+}
+
+.speech-bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10px 10px 0;
+  border-color: #d9d9d9 transparent transparent transparent;
+}
+
+.tooltip:hover .speech-bubble {
+  display: block; /* 툴팁이 호버되었을 때 말풍선을 표시 */
+  opacity: 1;
+  /* transform: translateX(10px) translateY(0); */
+}
+
+.bubble-title {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.speech-bubble ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin: 0;
+}
+
+.speech-bubble li {
+  line-height: 1.5;
 }

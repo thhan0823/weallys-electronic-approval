@@ -1,9 +1,10 @@
 import React from "react";
 import styles from "./calendar.module.css"; // CSS 모듈 불러오기
 
-const Calendar = ({year = new Date().getFullYear(), month = new Date().getMonth()}) => {
-
-
+const Calendar = ({
+  year = new Date().getFullYear(),
+  month = new Date().getMonth(),
+}) => {
   const firstDayOfMonth = new Date(year, month, 1);
   const lastDayOfMonth = new Date(year, month + 1, 0);
 
@@ -16,13 +17,12 @@ const Calendar = ({year = new Date().getFullYear(), month = new Date().getMonth(
   const isToday = (day) => {
     let today = new Date();
     return day === today.getDate() && month === today.getMonth();
-  }
+  };
 
   const isHoliday = (day) => {
     let today = new Date(year, month, day);
     return today.getDay() === 0;
-  }
-
+  };
 
   for (let i = 0; i < firstDayIndex; i++) {
     cells.push(
@@ -36,17 +36,19 @@ const Calendar = ({year = new Date().getFullYear(), month = new Date().getMonth(
   for (let i = 1; i <= daysInMonth; i++) {
     cells.push(
       <div key={`day-${i}`} className={`${styles.cell} ${styles["date-cell"]}`}>
-        <div className={
-          `${styles.date} 
-          ${isToday(i)? styles["date-today"] : ""}
+        <div
+          className={`${styles.date} 
+          ${isToday(i) ? styles["date-today"] : ""}
           ${isHoliday(i) ? styles["date-holiday"] : ""}
-          `}>{i}</div>
+          `}
+        >
+          {i}
+        </div>
         <div className={styles.content}></div>
       </div>
     );
   }
 
-  // 마지막 줄의 빈 셀 추가 (7열 맞추기)
   const remainingCells = 7 - (cells.length % 7);
   if (remainingCells < 7) {
     for (let i = 0; i < remainingCells; i++) {
