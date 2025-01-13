@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./calendar.module.css"; // CSS 모듈 불러오기
+import Tag from "../tag/tag";
 
 const Calendar = ({
   year = new Date().getFullYear(),
@@ -24,6 +25,10 @@ const Calendar = ({
     return today.getDay() === 0;
   };
 
+  const datePick = (day) => {
+    let pickDate = new Date(year, month, day);
+  };
+
   for (let i = 0; i < firstDayIndex; i++) {
     cells.push(
       <div
@@ -35,7 +40,11 @@ const Calendar = ({
 
   for (let i = 1; i <= daysInMonth; i++) {
     cells.push(
-      <div key={`day-${i}`} className={`${styles.cell} ${styles["date-cell"]}`}>
+      <div
+        key={`day-${i}`}
+        className={`${styles.cell} ${styles["date-cell"]}`}
+        onClick={() => datePick(i)}
+      >
         <div
           className={`${styles.date} 
           ${isToday(i) ? styles["date-today"] : ""}
@@ -44,7 +53,10 @@ const Calendar = ({
         >
           {i}
         </div>
-        <div className={styles.content}></div>
+        <div className={styles.content}>
+          <Tag text={"한태희 휴가"} color={"#E0EDFF"}></Tag>
+          <Tag text={"한태희 휴가"} color={"#E0EDFF"} type={"3"}></Tag>
+        </div>
       </div>
     );
   }
