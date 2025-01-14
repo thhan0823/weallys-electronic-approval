@@ -25,8 +25,23 @@ const Calendar = ({
     return today.getDay() === 0;
   };
 
-  const datePick = (day) => {
+  const convartKST = (date) => {
+    return new Date(date.getTime() - date.getTimezoneOffset() * 60000);
+  };
+
+  const datePick = async (day) => {
     let pickDate = new Date(year, month, day);
+
+    let convartDate = convartKST(pickDate);
+    await fetch("http://localhost:3000/api/schedule", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        date: convartDate.getTime(),
+      }),
+    });
   };
 
   for (let i = 0; i < firstDayIndex; i++) {
