@@ -5,13 +5,13 @@ import styles from "./header.module.css";
 import { usePathname } from "next/navigation";
 import Profile from "../profile/profile";
 
-const Header = ({ userProfile }) => {
+const Header = () => {
   const pathname = usePathname();
 
   return (
     <div className={styles.header}>
       <div className={styles.profile}>
-        <Profile userProfile={userProfile} />
+        <Profile />
       </div>
       <div className={styles.navigation}>
         <a

@@ -1,6 +1,7 @@
 import { Noto_Sans_KR } from "next/font/google";
 import Header from "./components/header/header";
 import "./globals.css";
+import { UserProvider } from "./context/userInfo";
 
 const geistSans = Noto_Sans_KR({
   weight: ["100", "300", "400", "500", "600", "700", "800"],
@@ -22,8 +23,10 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="ko">
       <body className={`${geistSans.variable}`}>
-        <Header userProfile={userProfile} />
-        <main>{children}</main>
+        <UserProvider userProfile={userProfile}>
+          <Header />
+          <main>{children}</main>
+        </UserProvider>
       </body>
     </html>
   );

@@ -1,7 +1,9 @@
 import React from "react";
 import styles from "./profile.module.css";
+import { useUserInfo } from "@/app/context/userInfo";
 
-const Profile = ({ userProfile }) => {
+const Profile = () => {
+  const userProfile = useUserInfo();
   return (
     <div className={styles.container}>
       <span className={styles["profile-img"]}>

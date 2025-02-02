@@ -7,7 +7,7 @@ const Tag = ({ text, color, type = 1 }) => {
       className={styles.tag}
       style={{
         backgroundColor: color,
-        width: `${type === 1 ? "148px" : "66px"}`,
+        width: `${type === 0 ? "148px" : "66px"}`,
       }}
     >
       {text}

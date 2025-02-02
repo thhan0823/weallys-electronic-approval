@@ -41,14 +41,15 @@
 
 .date-today {
   position: relative;
-  z-index: 1;
+  border-radius: 100%;
+  width: 24px;
+  height: 24px;
   color: #fff;
-  width: 1.2em;
-  height: 1.2em;
   text-align: center;
+  background-color: #007bff;
 }
 
-.date-today::before {
+/* .date-today::before {
   content: "";
   position: absolute;
   top: 4px;
@@ -59,7 +60,7 @@
   border-radius: 50%;
   z-index: -1;
   transform: scale(1.5);
-}
+} */
 
 .date-cell {
   background-color: #fff;
@@ -78,7 +79,7 @@
 
 .date {
   position: absolute;
-  top: 32px;
+  top: 14px;
   right: 28px;
   font-size: 16px;
   font-weight: bold;
@@ -90,7 +91,7 @@
   justify-content: center;
   /* align-items: center; */
   position: absolute;
-  top: 58px;
+  top: 44px;
   gap: 4px;
   padding: 4px;
 }

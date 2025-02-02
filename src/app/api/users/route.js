@@ -3,7 +3,7 @@ import { supabase } from "../lib/supabase";
 export async function GET() {
   const { data, error } = await supabase
     .from("user")
-    .select("name, email, annual, remaining_annual")
+    .select("id, name, email, annual, remaining_annual")
     .eq("email", "thhan@weallys.com")
     .single();
 
@@ -13,5 +13,6 @@ export async function GET() {
     }
     return new Response(JSON.stringify("에러에러"), { status: 500 });
   }
+
   return new Response(JSON.stringify(data), { status: 200 });
 }
