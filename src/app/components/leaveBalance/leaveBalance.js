@@ -1,8 +1,11 @@
 import React from "react";
 import styles from "./leaveBalance.module.css";
 import Image from "next/image";
+import { useUserInfo } from "@/app/context/userInfo";
 
 const LeaveBalance = () => {
+  const userInfo = useUserInfo();
+
   return (
     <div className={styles.container}>
       <div className={styles["leave-balance"]}>
@@ -36,9 +39,9 @@ const LeaveBalance = () => {
           <span>총 연차</span>
         </div>
         <div className={styles.value}>
-          <span>15</span>
+          <span>{userInfo.remaining_annual}</span>
           <span> / </span>
-          <span>15</span>
+          <span>{userInfo.annual}</span>
         </div>
       </div>
     </div>

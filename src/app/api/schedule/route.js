@@ -23,8 +23,11 @@ export async function GET(request) {
 
   const { data, error } = await supabase
     .from("schedule")
-    .select("id, type, sub_type, detail, date, user:user_id(name, email)")
+    .select(
+      "id, type, sub_type, detail, date,approved, user:user_id(name, email)"
+    )
     .eq("user.email", email)
+    .eq("approved", true)
     .gte("date", startOfMonth)
     .lt("date", endOfMonth);
 
@@ -37,14 +40,20 @@ export async function GET(request) {
   return new Response(JSON.stringify(data), { status: 200 });
 }
 
+const useAnnual = async (userId) => {
+  await supabase.rpc("decrement_remaining_annual", {
+    user_id_param: userId,
+  });
+};
+
 export async function POST(request) {
   const body = await request.json();
-
+  useAnnual(body.userId);
   const { data, error } = await supabase
     .from("schedule")
     .insert([
       {
-        user_id: 1,
+        user_id: body.userId,
         type: type.get(body.type),
         sub_type: subType.get(body.option),
         detail: body.detail,

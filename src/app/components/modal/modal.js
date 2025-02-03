@@ -50,7 +50,6 @@ const Modal = ({ pickDate, setOpenModal }) => {
     let detail = document.querySelector("#detail").value;
     postSchedule(userInfo.id, KSTDate, type, selectedOption, detail);
     setWizard(0);
-    // onClose();
   };
 
   const handleSelect = (text) => {
