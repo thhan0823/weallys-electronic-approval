@@ -40,12 +40,6 @@ export async function GET(request) {
 export async function POST(request) {
   const body = await request.json();
 
-  console.log(body.date);
-  console.log(type.get(body.type));
-  console.log(subType.get(body.option));
-  console.log(body.detail);
-  console.log(body.userId);
-
   const { data, error } = await supabase
     .from("schedule")
     .insert([
