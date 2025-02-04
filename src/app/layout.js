@@ -16,7 +16,7 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
   const response = await fetch(
-    "https://weallys-electronic-approval.vercel.app/users",
+    "https://weallys-electronic-approval.vercel.app/api/users",
     {
       cache: "no-store",
     }
