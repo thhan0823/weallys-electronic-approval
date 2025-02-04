@@ -1,12 +1,12 @@
-import { Noto_Sans_KR } from "next/font/google";
+import { Noto_Sans } from "next/font/google";
 import Header from "./components/header/header";
 import "./globals.css";
 import { UserProvider } from "./context/userInfo";
 
-const geistSans = Noto_Sans_KR({
+const geistSans = Noto_Sans({
   weight: ["100", "300", "400", "500", "600", "700", "800"],
   variable: "--font-geist-sans",
-  subsets: ["latin", "KR"],
+  subsets: ["latin"],
 });
 
 export const metadata = {
