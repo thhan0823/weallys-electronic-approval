@@ -15,9 +15,12 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  const response = await fetch("http://localhost:3000/api/users", {
-    cache: "no-store",
-  });
+  const response = await fetch(
+    "https://weallys-electronic-approval.vercel.app/users",
+    {
+      cache: "no-store",
+    }
+  );
   const userProfile = await response.json();
 
   return (

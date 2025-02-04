@@ -14,9 +14,12 @@ const getSchedule = async (email, year, month) => {
     month: month,
   });
 
-  return await fetch(`http://localhost:3000/api/schedule?${params}`, {
-    method: "GET",
-  }).then((res) => res.json());
+  return await fetch(
+    `https://weallys-electronic-approval.vercel.app/api/schedule?${params}`,
+    {
+      method: "GET",
+    }
+  ).then((res) => res.json());
 };
 
 const Calendar = ({
