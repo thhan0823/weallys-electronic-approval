@@ -1,15 +1,16 @@
 import { supabase } from "../lib/supabase";
 import { convartKST } from "@/app/util/DateUtil";
 
-export async function GET() {
+export async function GET(request) {
   const nowTimestamp = convartKST(new Date()).getTime();
+  const { searchParams } = new URL(request.url);
 
   const { data, error } = await supabase
     .from("user")
     .select(
       "id, name, email, annual, remaining_annual, schedule:schedule!inner(user_id, date, approved)"
     )
-    .eq("email", "thhan@weallys.com")
+    .eq("email", searchParams.get("email"))
     .gt("schedule.date", nowTimestamp)
     .order("date", { foreignTable: "schedule", ascending: true })
     .limit(1, { foreignTable: "schedule" })
@@ -22,7 +23,6 @@ export async function GET() {
     return new Response(JSON.stringify("에러에러"), { status: 500 });
   }
   const timestamp = parseInt(data.schedule[0].date);
-  console.log(data.schedule[0].approved);
 
   return new Response(JSON.stringify(data), { status: 200 });
 }

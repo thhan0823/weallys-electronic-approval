@@ -7,7 +7,7 @@ import { useUserInfo } from "@/app/context/userInfo";
 import { convartKST } from "@/app/util/DateUtil";
 
 const postSchedule = async (userId, convartDate, type, option, detail) => {
-  await fetch("https://weallys-electronic-approval.vercel.app/api/schedule", {
+  await fetch(`${process.env.NEXT_PUBLIC_API_URL}/schedule`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
