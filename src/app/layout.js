@@ -18,7 +18,6 @@ export const metadata = {
 };
 
 const getUserInfo = async (email) => {
-  console.log("hi");
   const params = new URLSearchParams({
     email: email,
   });
@@ -51,7 +50,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="ko">
       <body className={geistSans.variable}>
-        {shouldRedirectToLogin ? (
+        {currentPath === "/login" ? (
           <main>{children}</main>
         ) : (
           <UserProvider userProfile={userProfile}>
