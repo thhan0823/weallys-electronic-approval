@@ -8,8 +8,8 @@ const Login = () => {
   const router = useRouter();
 
   useEffect(() => {
-    signIn("azure-ad", { callbackUrl: "/dashboard" }).catch((error) =>
-      console.error("Login failed:", error)
+    signIn("azure-ad", { callbackUrl: "/dashboard", prompt: "consent" }).catch(
+      (error) => console.error("Login failed:", error)
     );
   }, []);
 
