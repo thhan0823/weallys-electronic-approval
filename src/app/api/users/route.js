@@ -22,7 +22,5 @@ export async function GET(request) {
     }
     return new Response(JSON.stringify("에러에러"), { status: 500 });
   }
-  const timestamp = parseInt(data.schedule[0].date);
-
   return new Response(JSON.stringify(data), { status: 200 });
 }

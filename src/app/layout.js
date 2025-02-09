@@ -4,6 +4,7 @@ import "./globals.css";
 import { UserProvider } from "./context/userInfo";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
+import { headers } from "next/headers";
 
 const geistSans = Noto_Sans({
   weight: ["100", "300", "400", "500", "600", "700", "800"],
@@ -17,6 +18,7 @@ export const metadata = {
 };
 
 const getUserInfo = async (email) => {
+  console.log("hi");
   const params = new URLSearchParams({
     email: email,
   });
@@ -27,25 +29,36 @@ const getUserInfo = async (email) => {
       cache: "no-store",
     }
   );
+
   return await response.json();
 };
 
 export default async function RootLayout({ children }) {
+  const headersList = await headers();
+  const currentPath = headersList.get("next-url") || "/";
   const session = await getServerSession();
+  let shouldRedirectToLogin = !session && currentPath !== "/login";
+  let userProfile;
 
-  if (!session) {
+  if (shouldRedirectToLogin) {
     redirect("/login");
   }
 
-  const userProfile = await getUserInfo(session.user.email);
+  if (session) {
+    userProfile = await getUserInfo(session.user.email);
+  }
 
   return (
     <html lang="ko">
-      <body className={`${geistSans.variable}`}>
-        <UserProvider userProfile={userProfile}>
-          <Header />
+      <body className={geistSans.variable}>
+        {shouldRedirectToLogin ? (
           <main>{children}</main>
-        </UserProvider>
+        ) : (
+          <UserProvider userProfile={userProfile}>
+            <Header />
+            <main>{children}</main>
+          </UserProvider>
+        )}
       </body>
     </html>
   );
