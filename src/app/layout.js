@@ -50,7 +50,6 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="ko">
       <body className={geistSans.variable}>
-        {currentPath.startsWith("/teams") && <TeamsInitializer />}
         {currentPath === "/login" ? (
           <main>{children}</main>
         ) : (
