@@ -10,6 +10,7 @@ const authOptions = {
       authorization: {
         params: {
           scope: "openid profile email",
+          state: "mycustomstate123",
         },
       },
     }),
