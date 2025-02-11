@@ -6,11 +6,11 @@ export function middleware(request) {
   requestHeaders.set("next-url", request.nextUrl.pathname);
 
   // 응답 생성
-  // const response = NextResponse.next({
-  //   request: {
-  //     headers: requestHeaders,
-  //   },
-  // });
+  const response = NextResponse.next({
+    request: {
+      headers: requestHeaders,
+    },
+  });
 
   // // Content-Security-Policy 및 X-Frame-Options 헤더 추가
   // response.headers.set(
@@ -22,7 +22,7 @@ export function middleware(request) {
   //   "ALLOW-FROM https://teams.microsoft.com"
   // );
 
-  // return response;
+  return response;
 }
 
 export const config = {
