@@ -12,15 +12,15 @@ export function middleware(request) {
     },
   });
 
-  // // Content-Security-Policy 및 X-Frame-Options 헤더 추가
-  // response.headers.set(
-  //   "Content-Security-Policy",
-  //   "frame-ancestors 'self' https://*.teams.microsoft.com;"
-  // );
-  // response.headers.set(
-  //   "X-Frame-Options",
-  //   "ALLOW-FROM https://teams.microsoft.com"
-  // );
+  // Content-Security-Policy 및 X-Frame-Options 헤더 추가
+  response.headers.set(
+    "Content-Security-Policy",
+    "frame-ancestors 'self' https://*.teams.microsoft.com;"
+  );
+  response.headers.set(
+    "X-Frame-Options",
+    "ALLOW-FROM https://teams.microsoft.com"
+  );
 
   return response;
 }
